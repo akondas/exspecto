@@ -1,0 +1,59 @@
+{
+    "name": "akondas/exspecto",
+    "type": "library",
+    "description": "Small PHP DSL for synchronizing asynchronous operations (busy-waiting)",
+    "keywords": [
+        "php",
+        "asynchronous",
+        "busy-waiting",
+        "testing",
+        "quality-assurance"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arkadiusz Kondas",
+            "email": "arkadiusz.kondas@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "phpstan/phpstan": "^0.12.69",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Akondas\\Exspecto\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Akondas\\Exspecto\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "build": [
+            "@check-cs",
+            "@phpstan",
+            "@phpunit"
+        ],
+        "check-cs": [
+            "php-cs-fixer fix --dry-run --diff"
+        ],
+        "fix-cs": [
+            "php-cs-fixer fix"
+        ],
+        "phpstan": [
+            "phpstan analyse src tests --level=max"
+        ],
+        "phpunit": [
+            "phpunit"
+        ]
+    }
+}
