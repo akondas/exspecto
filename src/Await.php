@@ -48,4 +48,27 @@ class Await
             }
         }
     }
+
+    /**
+     * @template T
+     *
+     * @param callable(): T $closure
+     *
+     * @return T
+     */
+    public function for(callable $closure)
+    {
+        $start = microtime(true);
+        while (true) {
+            usleep($this->pollInterval);
+            try {
+                return $closure();
+            } catch (\Throwable $throwable) {
+            }
+
+            if (Duration::seconds(microtime(true) - $start) > $this->waitTime) {
+                throw new TimeoutException('Closure was not able to return value in the specified wait time');
+            }
+        }
+    }
 }
