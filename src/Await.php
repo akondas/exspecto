@@ -56,7 +56,7 @@ class Await
      *
      * @return T
      */
-    public function for(callable $closure)
+    public function on(callable $closure)
     {
         $start = microtime(true);
         while (true) {

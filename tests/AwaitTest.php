@@ -44,7 +44,7 @@ class AwaitTest extends TestCase
         $iterations = 5;
         $start = microtime(true);
 
-        $value = await()->atMost(1)->pollInterval(10)->for(function () use (&$iterations): string {
+        $value = await()->atMost(1)->pollInterval(10)->on(function () use (&$iterations): string {
             if (--$iterations === 0) {
                 return 'success';
             }
@@ -63,7 +63,7 @@ class AwaitTest extends TestCase
     {
         $this->expectException(TimeoutException::class);
 
-        await()->atMost(100, Duration::MILLISECONDS)->pollInterval(30)->for(function (): string {
+        await()->atMost(100, Duration::MILLISECONDS)->pollInterval(30)->on(function (): string {
             throw new \RuntimeException('not yet');
         });
     }
