@@ -11,6 +11,7 @@ class DurationTest extends TestCase
 {
     /**
      * @param int|float $duration
+     *
      * @dataProvider durationsProvider
      */
     public function testFromUnit($duration, string $unit, int $expected): void

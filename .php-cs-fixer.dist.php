@@ -29,7 +29,6 @@ return (new PhpCsFixer\Config())
         'increment_style' => ['style' => 'pre'],
         'single_quote' => true,
         'trim_array_spaces' => true,
-        'single_blank_line_before_namespace' => true,
         'yoda_style' => false,
         'global_namespace_import' => [
             'import_classes' => false,
