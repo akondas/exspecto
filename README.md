@@ -1,6 +1,6 @@
 # Exspecto
 
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.1-8892BF.svg)](https://php.net/)
 
 Small PHP DSL for synchronizing asynchronous operations (busy-waiting).
 
@@ -19,6 +19,11 @@ You can use `pollInterval` to set how often the condition should be checked (def
 await()->atMost(3)->pollInterval(200)->until(function() {
     return customerStatusIsUpdated();
 });
+```
+
+You can also await for given value in case the returning method (closure) could throw an exception:
+```php
+$value = await()->atMost(3)->pollInterval(200)->on(fn() => getValue());
 ```
 
 ---

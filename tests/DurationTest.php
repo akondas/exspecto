@@ -22,7 +22,7 @@ class DurationTest extends TestCase
     /**
      * @return array<mixed>
      */
-    public function durationsProvider(): array
+    public static function durationsProvider(): array
     {
         return [
             [1, Duration::SECONDS, 1_000_000],

@@ -34,9 +34,7 @@ class AwaitTest extends TestCase
     {
         $this->expectException(TimeoutException::class);
 
-        await()->atMost(100, Duration::MILLISECONDS)->pollInterval(30)->until(function (): bool {
-            return false;
-        });
+        await()->atMost(100, Duration::MILLISECONDS)->pollInterval(30)->until(fn (): bool => false);
     }
 
     public function testReturnValue(): void
