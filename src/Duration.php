@@ -4,36 +4,27 @@ declare(strict_types=1);
 
 namespace Akondas\Exspecto;
 
-class Duration
+final class Duration
 {
     public const SECONDS = 'seconds';
     public const MILLISECONDS = 'milliseconds';
 
-    /**
-     * @param int|float $seconds
-     */
-    public static function seconds($seconds): int
+    public static function seconds(int|float $seconds): int
     {
         return (int) ($seconds * 1_000_000);
     }
 
-    /**
-     * @param int|float $milliseconds
-     */
-    public static function milliseconds($milliseconds): int
+    public static function milliseconds(int|float $milliseconds): int
     {
         return (int) ($milliseconds * 1_000);
     }
 
-    /**
-     * @param int|float $duration
-     */
-    public static function fromUnit($duration, string $unit): int
+    public static function fromUnit(int|float $duration, string $unit): int
     {
-        if (!method_exists(self::class, $unit)) {
-            throw new \InvalidArgumentException('Unknown unit');
-        }
-
-        return self::{$unit}($duration);
+        return match ($unit) {
+            'seconds' => self::seconds($duration),
+            'milliseconds' => self::milliseconds($duration),
+            default => throw new \InvalidArgumentException('Unknown unit'),
+        };
     }
 }

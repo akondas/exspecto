@@ -6,7 +6,7 @@ namespace Akondas\Exspecto;
 
 use Akondas\Exspecto\Exception\TimeoutException;
 
-class Await
+final class Await
 {
     private int $waitTime;
     private int $pollInterval;
