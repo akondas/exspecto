@@ -20,9 +20,9 @@
         "php": ">=8.2"
     },
     "require-dev": {
-        "php-cs-fixer/shim": "^3.48",
-        "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^10.5"
+        "php-cs-fixer/shim": "^3.64",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^11.4"
     },
     "autoload": {
         "psr-4": {

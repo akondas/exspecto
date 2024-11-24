@@ -5,16 +5,13 @@ declare(strict_types=1);
 namespace Akondas\Exspecto\Tests;
 
 use Akondas\Exspecto\Duration;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class DurationTest extends TestCase
 {
-    /**
-     * @param int|float $duration
-     *
-     * @dataProvider durationsProvider
-     */
-    public function testFromUnit($duration, string $unit, int $expected): void
+    #[DataProvider('durationsProvider')]
+    public function testFromUnit(int|float $duration, string $unit, int $expected): void
     {
         self::assertEquals($expected, Duration::fromUnit($duration, $unit));
     }
